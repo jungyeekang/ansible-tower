@@ -1,0 +1,20 @@
+---
+# tasks file for win_ad_user
+- name: Create windows domain group
+  win_domain_group:
+    name: "{{ item.group_name }}"
+    scope: "{{ item.group_scope }}"
+    state: present
+  with_items: "{{ user_info }}"
+
+- name: add AD user
+  win_domain_user:
+    name: "{{ item.name }}"
+    firstname: "{{ item.firstname }}"
+    surname: "{{ item.surname }}"
+    password: "{{ item.password }}"
+    email: "{{ item.email }}"
+    state: present
+    groups: "{{ item.group_name }}"
+  with_items: 
+    - "{{ user_info }}"

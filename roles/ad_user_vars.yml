@@ -1,0 +1,3 @@
+# vars file for roles/win_ad_user
+ user_info:
+   - { name: 'butterfly', firstname: 'ButterFly', surname: 'Korea', password: 'redhat@123',email: 'butterfly@ad1.example.opentlc.com', group_name: 'laptop', group_scope: 'domainlocal'}

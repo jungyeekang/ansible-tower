@@ -1,0 +1,12 @@
+---
+# tasks file for win_ad_user
+- name: add AD user
+  win_domain_user:
+    name: "{{ item.name }}"
+    firstname: "{{ item.firstname }}"
+    surname: "{{ item.surname }}"
+    password: "{{item.password }}"
+    email: "{{ item.email }}"
+    state: present
+  with_items: 
+    - "{{ user_info }}"

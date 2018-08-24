@@ -1,0 +1,19 @@
+---
+# tasks file for win_ad_install
+- name: install AD-Domain-Services
+  win_feature:
+    name: AD-Domain-Services
+    state: present
+
+- name: setup AD controller
+  win_domain: 
+    dns_domain_name: ad1.74ba.example.opentlc.com
+    safe_mode_password: jVMijRwLbI02gFCo2xkjlZ9lxEA7bm7zgg==
+
+- name: reboot window
+  win_reboot: 
+
+- name: print domain list
+  win_command: nltest /dclist:"{{ ad_domain_name }}"
+
+  
